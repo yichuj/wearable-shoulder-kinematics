@@ -18,9 +18,9 @@ Two notebooks are provided:
 
 ## Data Description
 
-- **`participant_*.csv`**: Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (MCL) quaternions, and MCL synchronization pulses.  
+- **`data/participant_*.csv`**: Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (MCL) quaternions, and MCL synchronization pulses.  
 
-- **`figure_data.xlsx`**: Preprocessed and aggregated data used to generate the figures reported in the manuscript.
+- **`data/figure_data.xlsx`**: Preprocessed and aggregated data used to generate the figures reported in the manuscript.
 
 ---
 
