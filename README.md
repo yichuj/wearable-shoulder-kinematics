@@ -16,11 +16,18 @@ Two notebooks are provided:
 
 ---
 
-## Data Description
+## Data Availbility
 
-- **`data/participant_*.csv`**: Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (MCL) quaternions, and MCL synchronization pulses.  
+Due to GitHub file size limitations, raw and preprocessed data files are **not stored directly in this repository**. The datasets supporting this study are available at: 
 
-- **`data/figure_data.xlsx`**: Preprocessed and aggregated data used to generate the figures reported in the manuscript.
+The code expects the following files to be present locally:
+
+- **`participant_*.csv`**: Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (MCL) quaternions, and MCL synchronization pulses.
+
+- **`figure_data.xlsx`**: Preprocessed and aggregated data used to generate the figures reported in the manuscript.
+
+Please place these files in the `data/` directory before running the notebooks.  
+Additional details are provided in **`data/README.md`**.
 
 ---
 
