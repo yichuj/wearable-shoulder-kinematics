@@ -1,5 +1,3 @@
-# data
-
 ## Data (not stored in this repository)
 
 Due to GitHub file size limits, data files are not included in this repository.  
