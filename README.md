@@ -1,54 +1,36 @@
 # wearable-shoulder-kinematics
+
 This repository accompanies the manuscript  
 **“Fusing IMUs and Soft Sensors for Long-Duration Tracking of 3D Shoulder Kinematics with Minimal Calibration”**  
 and provides code and data to support computational reproducibility and figure regeneration.
 
 ---
 
-## Repository Contents
+## Reproducibility and Figure Generation
 
-data/participant_*.csv: Example participant datasets used for reproducible runs
-data/figure_data.xlsx: Aggregated data used to generate paper figures
+Two notebooks are provided:
 
-notebooks/01_reproducible_run.ipynb
-notebooks/02_generate_paper_figures.ipynb
+- **`notebooks/01_reproducible_run.ipynb`** implements the full sensor fusion processing pipeline (FIS), including data preprocessing, CNN training using a short calibration segment, application of the fusion algorithm to correct IMU drift, and evaluation of orientation errors for IMU-only, SS-only, and FIS estimates.
 
-src/utils.py: Data loading and preprocessing
-src/fis.py: CNN model and fusion algorithm (FIS)
-src/metrics.py: Error computation and evaluation
-
-environment.yml: Example conda environment
-
----
-
-## Reproducible Run
-
-The notebook **`notebooks/01_reproducible_run.ipynb`** implements the full pipeline on an example participant dataset:
-
-1. Load and preprocess soft sensor, IMU, and motion capture data  
-2. Train a lightweight CNN using a short calibration segment  
-3. Apply the fusion algorithm to correct IMU drift  
-4. Compute and visualize orientation errors for:
-   - IMU-only
-   - Soft-sensor-only
-   - Fused (IMU + soft sensors)
-
----
-
-## Figure Generation
-
-The notebook **`notebooks/02_generate_paper_figures.ipynb`** generates the main manuscript figures directly from  
-`data/figure_data.xlsx`.
+- **`notebooks/02_generate_paper_figures.ipynb`** generates the main manuscript figures directly from `data/figure_data.xlsx`, allowing deterministic reproduction of reported results without re-running model training.
 
 ---
 
 ## Data Description
 
-- **`participant_*.csv`**  
-  Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (MCL) quaternions, and MCL synchronization pulses.  
+- **`participant_*.csv`**: Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (MCL) quaternions, and MCL synchronization pulses.  
 
-- **`figure_data.xlsx`**  
-  Preprocessed and aggregated data used to generate the figures reported in the manuscript.
+- **`figure_data.xlsx`**: Preprocessed and aggregated data used to generate the figures reported in the manuscript.
+
+---
+
+## Source Code
+
+- **`src/utils.py`**: Data loading and preprocessing utilities.
+
+- **`src/fis.py`**: Definition of the lightweight CNN used to map soft sensor signals to orientation estimates, and implementation of the FIS for yaw drift correction and smoothing.
+
+- **`src/metrics.py`**: Error computation and evaluation utilities.
 
 ---
 
