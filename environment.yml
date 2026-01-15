@@ -1,0 +1,14 @@
+name: fis
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - quaternionic=1.0.15
+  - matplotlib=3.8.4
+  - scikit-learn=1.4.2
+  - pip:
+      - jupyter==1.1.1
+      - tensorflow==2.19.0
