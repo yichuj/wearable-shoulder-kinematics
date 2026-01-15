@@ -10,6 +10,3 @@ Expected files:
 - figure_data.xlsx
 
 Place the data files in this folder before running the notebooks.
-
-Alternatively, set an environment variable pointing to the data directory:
-    export FIS_DATA_DIR=/path/to/data
