@@ -10,9 +10,9 @@ and provides code and data to support computational reproducibility and figure r
 
 Two notebooks are provided:
 
-- **`notebooks/01_reproducible_run.ipynb`** implements the full sensor fusion processing pipeline (FIS), including data preprocessing, CNN training using a short calibration segment, application of the fusion algorithm to correct IMU drift, and evaluation of orientation errors for IMU-only, SS-only, and FIS estimates.
+- **`notebooks/1_reproducible_run.ipynb`** implements the full sensor fusion processing pipeline (FIS), including data preprocessing, CNN training using a short calibration segment, application of the fusion algorithm to correct IMU drift, and evaluation of orientation errors for IMU-only, SS-only, and FIS estimates.
 
-- **`notebooks/02_generate_paper_figures.ipynb`** generates the main manuscript figures directly from `data/figure_data.xlsx`, allowing deterministic reproduction of reported results without re-running model training.
+- **`notebooks/2_generate_paper_figures.ipynb`** generates the main manuscript figures directly from `data/figure_data.xlsx`, allowing deterministic reproduction of reported results without re-running model training.
 
 ---
 
