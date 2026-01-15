@@ -7,28 +7,23 @@ and provides code and data to support computational reproducibility and figure r
 
 ## Repository Contents
 
-data/
-  participant_*.csv Example participant datasets used for reproducible runs
-  figure_data.xlsx Aggregated data used to generate paper figures
+data/participant_*.csv: Example participant datasets used for reproducible runs
+data/figure_data.xlsx: Aggregated data used to generate paper figures
 
-notebooks/
-  01_reproducible_run.ipynb
-  02_generate_paper_figures.ipynb
+notebooks/01_reproducible_run.ipynb
+notebooks/02_generate_paper_figures.ipynb
 
-src/
-  utils.py Data loading and preprocessing
-  fis.py CNN model and fusion algorithm (FIS)
-  metrics.py Error computation and evaluation
+src/utils.py: Data loading and preprocessing
+src/fis.py: CNN model and fusion algorithm (FIS)
+src/metrics.py: Error computation and evaluation
 
-environment.yml Example conda environment
+environment.yml: Example conda environment
 
 ---
 
 ## Reproducible Run
 
-The notebook  
-**`notebooks/01_reproducible_run.ipynb`**  
-implements the full pipeline on an example participant dataset:
+The notebook **`notebooks/01_reproducible_run.ipynb`** implements the full pipeline on an example participant dataset:
 
 1. Load and preprocess soft sensor, IMU, and motion capture data  
 2. Train a lightweight CNN using a short calibration segment  
@@ -42,9 +37,7 @@ implements the full pipeline on an example participant dataset:
 
 ## Figure Generation
 
-The notebook  
-**`notebooks/02_generate_paper_figures.ipynb`**  
-generates the main manuscript figures directly from  
+The notebook **`notebooks/02_generate_paper_figures.ipynb`** generates the main manuscript figures directly from  
 `data/figure_data.xlsx`.
 
 ---
