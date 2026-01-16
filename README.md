@@ -22,7 +22,7 @@ Due to GitHub file size limitations, raw and preprocessed data files are **not s
 
 The code expects the following files to be present locally:
 
-- **`participant_*.csv`**: Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (MCL) quaternions, and MCL synchronization pulses.
+- **`participant_*.csv`**: Datasets from all participants containing time, soft sensor signals, IMU quaternions, optical motion capture (OMC) quaternions, and OMC synchronization pulses.
 
 - **`figure_data.xlsx`**: Preprocessed and aggregated data used to generate the figures reported in the manuscript.
 
