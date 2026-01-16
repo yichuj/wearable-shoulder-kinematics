@@ -5,7 +5,7 @@ from numpy.lib.stride_tricks import sliding_window_view
 from sklearn.preprocessing import MinMaxScaler
 
 
-def get_MCL_idx(sync):
+def get_OMC_idx(sync):
     """
     Extract trial index ranges from a binary sync channel.
 
@@ -65,10 +65,10 @@ def read_csv(filename):
       9-12: IMU quaternion
       13-16: IMU_arm quaternion
       17-20: IMU_tor quaternion
-      21-24: MCL quaternion
-      25-28: MCL_arm quaternion
-      29-32: MCL_tor quaternion
-      last column: MCL sync channel (0/1)
+      21-24: OMC quaternion
+      25-28: OMC_arm quaternion
+      29-32: OMC_tor quaternion
+      last column: OMC sync channel (0/1)
 
     Parameters
     ----------
@@ -78,26 +78,26 @@ def read_csv(filename):
     Returns
     -------
     tuple
-        (t, SS, IMU, IMU_arm, IMU_tor, MCL, MCL_arm, MCL_tor, MCL_idx), where:
+        (t, SS, IMU, IMU_arm, IMU_tor, OMC, OMC_arm, OMC_tor, OMC_idx), where:
         - t: np.ndarray, shape (N,)
         - SS: np.ndarray, shape (N, 8)
-        - IMU, IMU_arm, IMU_tor, MCL, MCL_arm, MCL_tor: np.ndarray, shape (N, 4)
-        - MCL_idx: list of (start, end) index pairs (end exclusive)
+        - IMU, IMU_arm, IMU_tor, OMC, OMC_arm, OMC_tor: np.ndarray, shape (N, 4)
+        - OMC_idx: list of (start, end) index pairs (end exclusive)
     """
     data = pd.read_csv(filename, header=0).to_numpy()
     time = np.array(data[:, 0])
     SS = np.array(data[:, 1:9])
-    MCL_idx = get_MCL_idx(data[:, -1])
+    OMC_idx = get_OMC_idx(data[:, -1])
 
     IMU = prc_quat(data[:, 9:13])
     IMU_arm = prc_quat(data[:, 13:17])
     IMU_tor = prc_quat(data[:, 17:21])
 
-    MCL = prc_quat(data[:, 21:25])
-    MCL_arm = prc_quat(data[:, 25:29])
-    MCL_tor = prc_quat(data[:, 29:33])
+    OMC = prc_quat(data[:, 21:25])
+    OMC_arm = prc_quat(data[:, 25:29])
+    OMC_tor = prc_quat(data[:, 29:33])
 
-    return time, SS, IMU, IMU_arm, IMU_tor, MCL, MCL_arm, MCL_tor, MCL_idx
+    return time, SS, IMU, IMU_arm, IMU_tor, OMC, OMC_arm, OMC_tor, OMC_idx
 
 
 def prc_data(data):
@@ -121,18 +121,18 @@ def prc_data(data):
     tuple
         Preprocessed data tuple with the same structure as the input, except:
         - SS is normalized and reshaped to (N, 8, 1)
-        - MCL_idx is clamped to [0, len(t)]
+        - OMC_idx is clamped to [0, len(t)]
     """
-    t, SS, IMU, IMU_arm, IMU_tor, MCL, MCL_arm, MCL_tor, MCL_idx = data
+    t, SS, IMU, IMU_arm, IMU_tor, OMC, OMC_arm, OMC_tor, OMC_idx = data
 
     # Normalize SS using the first trial segment as calibration.
-    scaler = MinMaxScaler().fit(SS[MCL_idx[0][0] : MCL_idx[0][1], :])
+    scaler = MinMaxScaler().fit(SS[OMC_idx[0][0] : OMC_idx[0][1], :])
     SS = scaler.transform(SS)
 
     # Reshape SS to (N, C, 1).
     SS = np.transpose(sliding_window_view(SS, 1, 0), (0, 2, 1))
 
-    # Clamp MCL sync ranges to valid array bounds.
-    MCL_idx = [(max(0, x), min(max(0, y), len(t))) for (x, y) in MCL_idx]
+    # Clamp OMC sync ranges to valid array bounds.
+    OMC_idx = [(max(0, x), min(max(0, y), len(t))) for (x, y) in OMC_idx]
 
-    return t, SS, IMU, IMU_arm, IMU_tor, MCL, MCL_arm, MCL_tor, MCL_idx
+    return t, SS, IMU, IMU_arm, IMU_tor, OMC, OMC_arm, OMC_tor, OMC_idx

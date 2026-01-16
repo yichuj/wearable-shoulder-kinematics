@@ -51,7 +51,7 @@ def get_err(q1, q2):
     return np.degrees(qc.distance.rotation.intrinsic(q1, q2))
 
 
-def get_all_err(t, sig1, sig2, MCL_idx, tag=""):
+def get_all_err(t, sig1, sig2, OMC_idx, tag=""):
     """
     Compute and visualize quaternion angular error across trials.
 
@@ -68,7 +68,7 @@ def get_all_err(t, sig1, sig2, MCL_idx, tag=""):
         Reference quaternion signal in (w, x, y, z) order.
     sig2 : array-like, shape (N, 4)
         Estimated quaternion signal in (w, x, y, z) order.
-    MCL_idx : list of tuple
+    OMC_idx : list of tuple
         List of (start_idx, end_idx) pairs defining trial segments
         (end index exclusive).
     tag : str, optional
@@ -85,7 +85,7 @@ def get_all_err(t, sig1, sig2, MCL_idx, tag=""):
     print(f"{tag}")
     print("  RMSE for each trial:", end=" ")
     err_full = np.full((sig1.shape[0],), np.nan)
-    for i0, iN in MCL_idx:
+    for i0, iN in OMC_idx:
         err = get_err(sig1[i0:iN,:], sig2[i0:iN,:])
         err_full[i0:iN] = err
         print(f"{rms(err):.1f}\N{DEGREE SIGN}", end=", ")
@@ -99,7 +99,7 @@ def get_all_err(t, sig1, sig2, MCL_idx, tag=""):
     plt.xlabel("Time (s)"), plt.ylabel("Error (\N{DEGREE SIGN})")
     plt.ylim(-2, 50), plt.xlim(0, max(t))
     plt.legend(loc='upper right')
-    # plt.savefig("../results/" + tag + ".png", bbox_inches='tight')
+    plt.title(f"Time-Series Error Plot Using {tag}")
     plt.show()
         
     return err_full
