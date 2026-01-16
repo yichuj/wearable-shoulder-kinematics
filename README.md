@@ -18,7 +18,7 @@ Two notebooks are provided:
 
 ## Data Availbility
 
-Due to GitHub file size limitations, raw and preprocessed data files are **not stored directly in this repository**. The datasets supporting this study are available at: 
+Due to GitHub file size limitations, raw and preprocessed data files are **not stored directly in this repository**. The datasets supporting this study are available at: https://figshare.com/s/3a9654bb2e3af1d3e87b
 
 The code expects the following files to be present locally:
 
