@@ -22,16 +22,16 @@ Each `participant_x.csv` file contains a time-synchronized recording from a sing
 - **time**: timestamp in seconds  
 - **SS**: soft sensor signals recorded from the sensing shirt. These values are the digitized outputs of the capacitance sensing chip and are unitless  
 - **IMU orientations**: orientation estimates from inertial measurement units, represented as unit quaternions in the order **(w, x, y, z)**  
-- **MCL orientations**: optical motion capture (reference) orientations, also represented as unit quaternions in the order **(w, x, y, z)**  
-- **MCL sync**: a binary (0/1) synchronization pulse used to segment calibration and evaluation trials  
+- **OMC orientations**: optical motion capture (reference) orientations, also represented as unit quaternions in the order **(w, x, y, z)**  
+- **OMC sync**: a binary (0/1) synchronization pulse used to segment calibration and evaluation trials  
 
-For both IMU and MCL orientations, measurements are provided for the shoulder, arm, and torso. For example, IMU orientation columns follow the pattern:
+For both IMU and OMC orientations, measurements are provided for the shoulder, arm, and torso. For example, IMU orientation columns follow the pattern:
 
 imu_w, imu_x, imu_y, imu_z,
 imu_arm_w, imu_arm_x, imu_arm_y, imu_arm_z,
 imu_tor_w, imu_tor_x, imu_tor_y, imu_tor_z
 
-The same naming convention is used for the corresponding MCL orientation columns.
+The same naming convention is used for the corresponding OMC orientation columns.
 
 ---
 
