@@ -1,7 +1,7 @@
 # wearable-shoulder-kinematics
 
 This repository accompanies the manuscript  
-**“Fusing IMUs and Soft Sensors for Long-Duration Tracking of 3D Shoulder Kinematics with Minimal Calibration”**  
+**“Minimal-calibration multimodal wearable sensing for long-duration three-dimensional shoulder kinematics”** (https://doi.org/10.1038/s44460-026-00059-7) 
 and provides code and data to support computational reproducibility and figure regeneration.
 
 ---
